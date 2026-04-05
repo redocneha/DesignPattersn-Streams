@@ -77,7 +77,7 @@ public class StreamOperations {
         //get employee count per department
         Map<String,Long> empCountPerDept = employeeList.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.counting()));
 
-        \\\
+
         System.out.println("Employee count per dept");
         empCountPerDept.forEach((key, value) -> System.out.println(key + ": " + value));
 

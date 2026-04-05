@@ -5,8 +5,6 @@ public class Main {
     public static void main(String[] args) {
 
         Solution solution = new Solution();
-        char[][] board = new char[][]{{"A","B","C","D"}{"S","A","A","T"}["A","C","A","E"]]
-        solution.exist()
     }
 
 }

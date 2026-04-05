@@ -10,6 +10,13 @@ public class Employee {
     private String department;
     private int yearsOfExperience;
 
+    public Employee(int id, String name, int age, double salary){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
     // Constructor
     public Employee(int id, String name, int age, double salary, String city,
                     String gender, String department, int yearsOfExperience) {
