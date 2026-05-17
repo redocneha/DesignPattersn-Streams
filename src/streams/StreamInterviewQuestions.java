@@ -31,6 +31,7 @@ public class StreamInterviewQuestions {
 
         //find longest string in an array
         String[] strings = {"java","techie","springboot","djk"};
+        String res = Arrays.stream(strings).max(Comparator.comparingInt(String::length)).orElse("");
         System.out.println(
                 Arrays.stream(strings).max(Comparator.comparingInt(String::length)).get());
 

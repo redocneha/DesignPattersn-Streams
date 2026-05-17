@@ -107,6 +107,16 @@ public class BasicStreamOperations {
         }).map(x -> String.join(".",x)).toList();
         System.out.println("Sorted Version list: " + sortedStrList);
 
+
+        List<String> stringsList = List.of("as","123","abc");
+        List<Integer> result5 = stringsList.stream().map(x->{
+            try{
+                return  Integer.parseInt(x);
+            } catch(Exception e){
+                return null;
+            }
+        }).filter(Objects::nonNull).toList();
+        System.out.println("res: " + result5);
         int number = 1234;
         int sum = String.valueOf(number).chars().map(Character::getNumericValue).sum();
         System.out.println("Sum of the digits in the number: " + sum);
@@ -281,7 +291,7 @@ public class BasicStreamOperations {
 
         long wordsLen = Arrays.stream(input.split(" ")).count();
         System.out.println("word count: "+wordsLen);
-
+        //todo
         Path filePath = Paths.get("src/streams/demo.txt");
         long lineCount = Files.lines(filePath).count();
         System.out.println("Line count: "+lineCount);
@@ -336,7 +346,7 @@ public class BasicStreamOperations {
 
         List<String> words2 = Files.lines(filePath).flatMap( x-> Arrays.stream(x.split(" "))).toList();
         System.out.println("words---"+words2);
-
+        //todo
         List<String> mostFreqWords = words2.stream().collect(Collectors.groupingBy(s->s,Collectors.counting())).entrySet().stream().sorted((a,b)-> Math.toIntExact(b.getValue() - a.getValue())).map(Map.Entry::getKey).limit(2).toList();
         System.out.println("Top 2 Most freq words---"+mostFreqWords);
         mostFreqWords = words2.stream().collect(Collectors.groupingBy(s->s,Collectors.counting())).entrySet().stream().sorted(Map.Entry.<String,Long>comparingByValue().reversed()).map(Map.Entry::getKey).limit(2).toList();
@@ -380,7 +390,14 @@ public class BasicStreamOperations {
 
 
 
-
+        String[] sentences = {
+                "Here is a #sample sentence.",
+                "This is another #example of a sentence.",
+                "#Java streams #Java  are powerful.",
+                "Find words that start with #."
+        };
+        List<String> hashStr = Arrays.stream(sentences).flatMap(str -> Arrays.stream(str.split("\\s+"))).filter(st -> st.startsWith("#")).map(s->s.substring(1)).distinct().toList();
+        System.out.println("Res --"+hashStr);
 
 
 
